@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.bs_LandGradeMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.bs_LandGrade" >
+    <id column="landGradeId" property="landgradeid" jdbcType="INTEGER" />
+    <result column="landGradeIdName" property="landgradeidname" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    landGradeId, landGradeIdName
+  </sql>
+  <select id="selectLandGrade" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from bs_landgrade
+ 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_landgrade
+    where landGradeId = #{landgradeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.renjun.po.bs_LandGrade" >
+    insert into bs_landgrade (landGradeId, landGradeIdName)
+    values (#{landgradeid,jdbcType=INTEGER}, #{landgradeidname,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.bs_LandGrade" >
+    insert into bs_landgrade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="landgradeid != null" >
+        landGradeId,
+      </if>
+      <if test="landgradeidname != null" >
+        landGradeIdName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="landgradeid != null" >
+        #{landgradeid,jdbcType=INTEGER},
+      </if>
+      <if test="landgradeidname != null" >
+        #{landgradeidname,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.bs_LandGrade" >
+    update bs_landgrade
+    <set >
+      <if test="landgradeidname != null" >
+        landGradeIdName = #{landgradeidname,jdbcType=CHAR},
+      </if>
+    </set>
+    where landGradeId = #{landgradeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.renjun.po.bs_LandGrade" >
+    update bs_landgrade
+    set landGradeIdName = #{landgradeidname,jdbcType=CHAR}
+    where landGradeId = #{landgradeid,jdbcType=INTEGER}
+  </update>
+</mapper>

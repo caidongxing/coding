@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.yw_GdBoxOfficeMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.yw_GdBoxOffice" >
+    <id column="gdBoxOfficeId" property="gdboxofficeid" jdbcType="INTEGER" />
+    <result column="boxOfficeId" property="boxofficeid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="statusId" property="statusid" jdbcType="INTEGER" />
+    <result column="ReceivingTime" property="receivingtime" jdbcType="TIMESTAMP" />
+    <result column="cutOffTime" property="cutOffTime" jdbcType="CHAR" />
+    <result column="overrule" property="overrule" jdbcType="CHAR" />
+    <result column="overruleReason" property="overrulereason" jdbcType="CHAR" />
+     <result column="send" property="send" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    gdBoxOfficeId, boxOfficeId, userId, statusId, ReceivingTime, cutOffTime
+  </sql>
+   <select id="selectGdBoxOffice" resultType="com.renjun.vo.yw_BoxOffice" >
+   
+SELECT yw_boxoffice.boxOfficeId,bs_status.statusName,yw_boxoffice.identifier,yw_boxoffice.entryName,yw_gdboxoffice.ReceivingTime,bs_registertype.registerTypeName,
+  bs_typeofright.typeOfRightName,bs_processclassification.processClassificationName,bs_managementactivities.managementActivitiesName,USER.username,yw_boxoffice.urgencyLevel,yw_boxoffice.ProjectNotes,yw_gdboxoffice.cutOffTime,yw_gdboxoffice.statusId,yw_gdboxoffice.overrule,yw_gdboxoffice.overruleReason,yw_gdboxoffice.send FROM yw_gdboxoffice
+  INNER JOIN yw_boxoffice ON yw_boxoffice.boxOfficeId=yw_gdboxoffice.boxOfficeId
+  INNER JOIN bs_status ON yw_gdboxoffice.statusId=bs_status.statusId 
+  INNER JOIN bs_managementactivities ON yw_boxoffice.managementActivitiesId=bs_managementactivities.managementActivitiesId
+  INNER JOIN bs_registertype ON yw_boxoffice.registerTypeId=bs_registertype.registerTypeId INNER JOIN bs_typeofright ON yw_boxoffice.typeOfRightId=bs_typeofright.typeOfRightId
+  INNER JOIN bs_processclassification ON yw_boxoffice.processClassificationId=bs_processclassification.processClassificationId
+  INNER JOIN USER ON yw_gdboxoffice.userId=USER.userId
+  
+  
+    where  yw_gdboxoffice.statusId= #{statusid,jdbcType=INTEGER} and USER.username=#{username,jdbcType=CHAR}
+  </select>
+  
+  <select id="selectGdBoxOfficeById" resultType="com.renjun.vo.yw_BoxOffice" >
+SELECT yw_boxoffice.boxOfficeId,bs_status.statusName,yw_boxoffice.identifier,yw_boxoffice.entryName,yw_gdboxoffice.ReceivingTime,bs_registertype.registerTypeName,
+  bs_typeofright.typeOfRightName,bs_processclassification.processClassificationName,bs_managementactivities.managementActivitiesName,USER.username,yw_boxoffice.urgencyLevel,yw_boxoffice.ProjectNotes,yw_gdboxoffice.cutOffTime,yw_gdboxoffice.statusId,yw_gdboxoffice.overrule,yw_gdboxoffice.overruleReason,yw_gdboxoffice.send FROM yw_gdboxoffice
+  INNER JOIN yw_boxoffice ON yw_boxoffice.boxOfficeId=yw_gdboxoffice.boxOfficeId
+  INNER JOIN bs_status ON yw_gdboxoffice.statusId=bs_status.statusId 
+  INNER JOIN bs_managementactivities ON yw_boxoffice.managementActivitiesId=bs_managementactivities.managementActivitiesId
+  INNER JOIN bs_registertype ON yw_boxoffice.registerTypeId=bs_registertype.registerTypeId INNER JOIN bs_typeofright ON yw_boxoffice.typeOfRightId=bs_typeofright.typeOfRightId
+  INNER JOIN bs_processclassification ON yw_boxoffice.processClassificationId=bs_processclassification.processClassificationId
+  INNER JOIN USER ON yw_gdboxoffice.userId=USER.userId
+  
+    where  yw_boxoffice.boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteGdBoxOffice" parameterType="java.lang.Integer" >
+    delete from yw_gdboxoffice
+    where boxOfficeId= #{boxofficeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertGdBoxOffice" parameterType="com.renjun.po.yw_GdBoxOffice" >
+    insert into yw_gdboxoffice (boxOfficeId, userId, 
+      statusId, ReceivingTime, cutOffTime,overrule,send
+      )
+    values (#{boxofficeid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{statusid,jdbcType=INTEGER}, #{receivingtime,jdbcType=TIMESTAMP}, #{cutOffTime,jdbcType=CHAR}, #{overrule,jdbcType=CHAR}, #{send,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.yw_GdBoxOffice" >
+    insert into yw_gdboxoffice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gdboxofficeid != null" >
+        gdBoxOfficeId,
+      </if>
+      <if test="boxofficeid != null" >
+        boxOfficeId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="statusid != null" >
+        statusId,
+      </if>
+      <if test="receivingtime != null" >
+        ReceivingTime,
+      </if>
+      <if test="cutOffTime != null" >
+        cutOffTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gdboxofficeid != null" >
+        #{gdboxofficeid,jdbcType=INTEGER},
+      </if>
+      <if test="boxofficeid != null" >
+        #{boxofficeid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null" >
+        #{statusid,jdbcType=INTEGER},
+      </if>
+      <if test="receivingtime != null" >
+        #{receivingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cutOffTime != null" >
+        #{cutOffTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.yw_GdBoxOffice" >
+    update yw_gdboxoffice
+    <set >
+      <if test="boxofficeid != null" >
+        boxOfficeId = #{boxofficeid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null" >
+        statusId = #{statusid,jdbcType=INTEGER},
+      </if>
+      <if test="receivingtime != null" >
+        ReceivingTime = #{receivingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cutOffTime != null" >
+        cutOffTime = #{cutOffTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where gdBoxOfficeId = #{gdboxofficeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateGdBoxOffice" parameterType="com.renjun.po.yw_GdBoxOffice" >
+    update yw_gdboxoffice
+    set  
+      statusId = #{statusid,jdbcType=INTEGER},
+      cutOffTime = #{cutOffTime,jdbcType=CHAR}
+      
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectGdNumberBySend" resultType="com.renjun.vo.yw_BoxOffice" >
+    SELECT * from yw_gdboxoffice
+     where yw_gdboxoffice.send = #{send,jdbcType=CHAR}
+  </select>
+  
+  <update id="updateGdBoxOfficeSend" parameterType="com.renjun.po.yw_GdBoxOffice" >
+    update yw_gdboxoffice
+    set    
+      send = #{send,jdbcType=CHAR}
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </update>
+</mapper>

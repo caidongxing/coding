@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.yw_PlaceOnFileMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.yw_PlaceOnFile" >
+    <id column="placeOnFileId" property="placeonfileid" jdbcType="INTEGER" />
+    <result column="boxOfficeId" property="boxofficeid" jdbcType="INTEGER" />
+    <result column="fileNo" property="fileno" jdbcType="CHAR" />
+    <result column="documentNumber" property="documentnumber" jdbcType="CHAR" />
+    <result column="pageCount" property="pagecount" jdbcType="CHAR" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="filingTime" property="filingtime" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    placeOnFileId, boxOfficeId, fileNo, documentNumber, pageCount, userId, filingTime, 
+    remarks
+  </sql>
+  <select id="selectPlaceOnFileId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yw_placeonfile
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yw_placeonfile
+    where placeOnFileId = #{placeonfileid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertPlaceOnFile" parameterType="com.renjun.po.yw_PlaceOnFile" >
+    insert into yw_placeonfile (boxOfficeId, fileNo, 
+      documentNumber, pageCount, userId, 
+      filingTime, remarks)
+    values (#{boxofficeid,jdbcType=INTEGER}, #{fileno,jdbcType=CHAR}, 
+      #{documentnumber,jdbcType=CHAR}, #{pagecount,jdbcType=CHAR}, #{userid,jdbcType=INTEGER}, 
+      #{filingtime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.yw_PlaceOnFile" >
+    insert into yw_placeonfile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="placeonfileid != null" >
+        placeOnFileId,
+      </if>
+      <if test="boxofficeid != null" >
+        boxOfficeId,
+      </if>
+      <if test="fileno != null" >
+        fileNo,
+      </if>
+      <if test="documentnumber != null" >
+        documentNumber,
+      </if>
+      <if test="pagecount != null" >
+        pageCount,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="filingtime != null" >
+        filingTime,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="placeonfileid != null" >
+        #{placeonfileid,jdbcType=INTEGER},
+      </if>
+      <if test="boxofficeid != null" >
+        #{boxofficeid,jdbcType=INTEGER},
+      </if>
+      <if test="fileno != null" >
+        #{fileno,jdbcType=CHAR},
+      </if>
+      <if test="documentnumber != null" >
+        #{documentnumber,jdbcType=CHAR},
+      </if>
+      <if test="pagecount != null" >
+        #{pagecount,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="filingtime != null" >
+        #{filingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.yw_PlaceOnFile" >
+    update yw_placeonfile
+    <set >
+      <if test="boxofficeid != null" >
+        boxOfficeId = #{boxofficeid,jdbcType=INTEGER},
+      </if>
+      <if test="fileno != null" >
+        fileNo = #{fileno,jdbcType=CHAR},
+      </if>
+      <if test="documentnumber != null" >
+        documentNumber = #{documentnumber,jdbcType=CHAR},
+      </if>
+      <if test="pagecount != null" >
+        pageCount = #{pagecount,jdbcType=CHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="filingtime != null" >
+        filingTime = #{filingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=CHAR},
+      </if>
+    </set>
+    where placeOnFileId = #{placeonfileid,jdbcType=INTEGER}
+  </update>
+  <update id="updatePlaceOnFile" parameterType="com.renjun.po.yw_PlaceOnFile" >
+    update yw_placeonfile
+    set       
+      pageCount = #{pagecount,jdbcType=CHAR},
+      remarks = #{remarks,jdbcType=CHAR}
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </update>
+</mapper>

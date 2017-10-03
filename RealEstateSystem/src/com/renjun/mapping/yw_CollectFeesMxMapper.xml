@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.yw_CollectFeesMxMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.yw_CollectFeesMx" >
+    <id column="collectFeesMxId" property="collectfeesmxid" jdbcType="INTEGER" />
+    <result column="collectFeesId" property="collectfeesid" jdbcType="INTEGER" />
+    <result column="collectFeesInformationId" property="collectfeesinformationid" jdbcType="INTEGER" />
+    <!-- 权利信息Id -->
+       <result column="rightInformationId" property="rightinformationid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    collectFeesMxId, collectFeesId, collectFeesInformationId
+  </sql>
+  <select id="selectCollectFeesMxById" resultType="com.renjun.po.yw_CollectFeesInformation" >
+   SELECT yw_collectfeesinformation.collectFeesInformationId, bs_chargingitem.chargingItemName, yw_collectfeesinformation.chargeAmount,yw_collectfeesinformation.remarks FROM yw_collectfeesmx
+INNER JOIN yw_collectfeesinformation ON yw_collectfeesinformation.collectFeesInformationId=yw_collectfeesmx.collectFeesInformationId
+INNER JOIN bs_chargingitem ON yw_collectfeesinformation.chargingItemId=bs_chargingitem.chargingItemId
+INNER JOIN yw_collectfees ON  yw_collectfees.collectFeesId=yw_collectfeesmx.collectFeesId
+
+    where rightInformationId = #{rightinformationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteCollectFeesMxByQlId" parameterType="java.lang.Integer" >
+    delete from yw_collectfeesmx
+    where collectFeesId = #{collectfeesid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertCollectFeesMx" parameterType="com.renjun.po.yw_CollectFeesMx" >
+    insert into yw_collectfeesmx (collectFeesId, collectFeesInformationId
+      )
+    values (#{collectfeesid,jdbcType=INTEGER}, #{collectfeesinformationid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.yw_CollectFeesMx" >
+    insert into yw_collectfeesmx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collectfeesmxid != null" >
+        collectFeesMxId,
+      </if>
+      <if test="collectfeesid != null" >
+        collectFeesId,
+      </if>
+      <if test="collectfeesinformationid != null" >
+        collectFeesInformationId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collectfeesmxid != null" >
+        #{collectfeesmxid,jdbcType=INTEGER},
+      </if>
+      <if test="collectfeesid != null" >
+        #{collectfeesid,jdbcType=INTEGER},
+      </if>
+      <if test="collectfeesinformationid != null" >
+        #{collectfeesinformationid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.yw_CollectFeesMx" >
+    update yw_collectfeesmx
+    <set >
+      <if test="collectfeesid != null" >
+        collectFeesId = #{collectfeesid,jdbcType=INTEGER},
+      </if>
+      <if test="collectfeesinformationid != null" >
+        collectFeesInformationId = #{collectfeesinformationid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where collectFeesMxId = #{collectfeesmxid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.renjun.po.yw_CollectFeesMx" >
+    update yw_collectfeesmx
+    set collectFeesId = #{collectfeesid,jdbcType=INTEGER},
+      collectFeesInformationId = #{collectfeesinformationid,jdbcType=INTEGER}
+    where collectFeesMxId = #{collectfeesmxid,jdbcType=INTEGER}
+  </update>
+</mapper>
