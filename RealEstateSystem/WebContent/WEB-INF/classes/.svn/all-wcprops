@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/WebRoot/WEB-INF/classes
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/WebRoot/WEB-INF/classes/spring-mvc.xml
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/WebRoot/WEB-INF/classes/jdbc.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/WebRoot/WEB-INF/classes/log4j.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/WebRoot/WEB-INF/classes/applicationContext.xml
+END
+spring-mybatis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/WebRoot/WEB-INF/classes/spring-mybatis.xml
+END

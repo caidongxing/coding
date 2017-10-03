@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.yw_AuditingOpinionMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.yw_AuditingOpinion" >
+    <id column="auditingOpinionId" property="auditingopinionid" jdbcType="INTEGER" />
+    <result column="auditingOpinionName" property="auditingopinionname" jdbcType="CHAR" />
+    <result column="boxOfficeId" property="boxofficeid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    auditingOpinionId, auditingOpinionName, boxOfficeId,createTime
+  </sql>
+  <select id="selectAuditingOpinion" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yw_auditingopinion
+     where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yw_auditingopinion
+    where auditingOpinionId = #{auditingopinionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertAuditingOpinion" parameterType="com.renjun.po.yw_AuditingOpinion" >
+    insert into yw_auditingopinion (auditingOpinionName, 
+      boxOfficeId,createTime)
+    values (#{auditingopinionname,jdbcType=CHAR}, 
+      #{boxofficeid,jdbcType=INTEGER},#{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.yw_AuditingOpinion" >
+    insert into yw_auditingopinion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="auditingopinionid != null" >
+        auditingOpinionId,
+      </if>
+      <if test="auditingopinionname != null" >
+        auditingOpinionName,
+      </if>
+      <if test="boxofficeid != null" >
+        boxOfficeId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="auditingopinionid != null" >
+        #{auditingopinionid,jdbcType=INTEGER},
+      </if>
+      <if test="auditingopinionname != null" >
+        #{auditingopinionname,jdbcType=CHAR},
+      </if>
+      <if test="boxofficeid != null" >
+        #{boxofficeid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.yw_AuditingOpinion" >
+    update yw_auditingopinion
+    <set >
+      <if test="auditingopinionname != null" >
+        auditingOpinionName = #{auditingopinionname,jdbcType=CHAR},
+      </if>
+      <if test="boxofficeid != null" >
+        boxOfficeId = #{boxofficeid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where auditingOpinionId = #{auditingopinionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateAuditingOpinion" parameterType="com.renjun.po.yw_AuditingOpinion" >
+    update yw_auditingopinion
+    set auditingOpinionName = #{auditingopinionname,jdbcType=CHAR},createTime=#{createtime,jdbcType=TIMESTAMP}
+      
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </update>
+</mapper>

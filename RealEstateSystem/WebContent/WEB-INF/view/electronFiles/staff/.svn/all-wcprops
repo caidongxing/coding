@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/WebRoot/WEB-INF/view/electronFiles/staff
+END
+insertStaff.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/WebRoot/WEB-INF/view/electronFiles/staff/insertStaff.jsp
+END
+staffMessage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/WebRoot/WEB-INF/view/electronFiles/staff/staffMessage.jsp
+END
+staffMessageTable.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/WebRoot/WEB-INF/view/electronFiles/staff/staffMessageTable.jsp
+END
+updateStaff.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/WebRoot/WEB-INF/view/electronFiles/staff/updateStaff.jsp
+END

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.bs_CadastralAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.bs_CadastralArea" >
+    <id column="cadastralAreaId" property="cadastralareaid" jdbcType="INTEGER" />
+    <result column="cadastralArea" property="cadastralarea" jdbcType="CHAR" />
+    <result column="cadastralAreaCode" property="cadastralareacode" jdbcType="CHAR" />
+    <result column="districtAndCountyId" property="districtandcountyid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cadastralAreaId, cadastralArea, cadastralAreaCode, districtAndCountyId
+  </sql>
+  <select id="selectCadastralArea" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_cadastralarea
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_cadastralarea
+    where cadastralAreaId = #{cadastralareaid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.renjun.po.bs_CadastralArea" >
+    insert into bs_cadastralarea (cadastralAreaId, cadastralArea, cadastralAreaCode, 
+      districtAndCountyId)
+    values (#{cadastralareaid,jdbcType=INTEGER}, #{cadastralarea,jdbcType=CHAR}, #{cadastralareacode,jdbcType=CHAR}, 
+      #{districtandcountyid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.bs_CadastralArea" >
+    insert into bs_cadastralarea
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cadastralareaid != null" >
+        cadastralAreaId,
+      </if>
+      <if test="cadastralarea != null" >
+        cadastralArea,
+      </if>
+      <if test="cadastralareacode != null" >
+        cadastralAreaCode,
+      </if>
+      <if test="districtandcountyid != null" >
+        districtAndCountyId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cadastralareaid != null" >
+        #{cadastralareaid,jdbcType=INTEGER},
+      </if>
+      <if test="cadastralarea != null" >
+        #{cadastralarea,jdbcType=CHAR},
+      </if>
+      <if test="cadastralareacode != null" >
+        #{cadastralareacode,jdbcType=CHAR},
+      </if>
+      <if test="districtandcountyid != null" >
+        #{districtandcountyid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.bs_CadastralArea" >
+    update bs_cadastralarea
+    <set >
+      <if test="cadastralarea != null" >
+        cadastralArea = #{cadastralarea,jdbcType=CHAR},
+      </if>
+      <if test="cadastralareacode != null" >
+        cadastralAreaCode = #{cadastralareacode,jdbcType=CHAR},
+      </if>
+      <if test="districtandcountyid != null" >
+        districtAndCountyId = #{districtandcountyid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cadastralAreaId = #{cadastralareaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.renjun.po.bs_CadastralArea" >
+    update bs_cadastralarea
+    set cadastralArea = #{cadastralarea,jdbcType=CHAR},
+      cadastralAreaCode = #{cadastralareacode,jdbcType=CHAR},
+      districtAndCountyId = #{districtandcountyid,jdbcType=INTEGER}
+    where cadastralAreaId = #{cadastralareaid,jdbcType=INTEGER}
+  </update>
+</mapper>

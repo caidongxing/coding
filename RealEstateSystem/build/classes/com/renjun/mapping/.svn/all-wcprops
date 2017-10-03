@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/RealEstateSystem/!svn/ver/6/RealEstateSystem/src/com/renjun/mapping
+END
+bs_CommonWayMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_CommonWayMapper.xml
+END
+yw_CollectFeesMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/26/RealEstateSystem/src/com/renjun/mapping/yw_CollectFeesMapper.xml
+END
+bs_UseMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/RealEstateSystem/!svn/ver/27/RealEstateSystem/src/com/renjun/mapping/bs_UseMapper.xml
+END
+yw_RightPersonInformationMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/RealEstateSystem/!svn/ver/17/RealEstateSystem/src/com/renjun/mapping/yw_RightPersonInformationMapper.xml
+END
+bs_TypeofRightMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/src/com/renjun/mapping/bs_TypeofRightMapper.xml
+END
+bs_ProvinceMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_ProvinceMapper.xml
+END
+yw_SzBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/35/RealEstateSystem/src/com/renjun/mapping/yw_SzBoxOfficeMapper.xml
+END
+bs_CadastralAreaMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/RealEstateSystem/!svn/ver/28/RealEstateSystem/src/com/renjun/mapping/bs_CadastralAreaMapper.xml
+END
+yw_ApplicantMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/RealEstateSystem/!svn/ver/37/RealEstateSystem/src/com/renjun/mapping/yw_ApplicantMapper.xml
+END
+yw_FirstOpiniontMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/RealEstateSystem/!svn/ver/32/RealEstateSystem/src/com/renjun/mapping/yw_FirstOpiniontMapper.xml
+END
+yw_CollectFeesMxMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/RealEstateSystem/!svn/ver/26/RealEstateSystem/src/com/renjun/mapping/yw_CollectFeesMxMapper.xml
+END
+bs_ApplicationForHumanMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_ApplicationForHumanMapper.xml
+END
+yw_RecheckOpiniontMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/RealEstateSystem/!svn/ver/32/RealEstateSystem/src/com/renjun/mapping/yw_RecheckOpiniontMapper.xml
+END
+bs_CountryMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_CountryMapper.xml
+END
+yw_DbBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/34/RealEstateSystem/src/com/renjun/mapping/yw_DbBoxOfficeMapper.xml
+END
+yw_GdBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/36/RealEstateSystem/src/com/renjun/mapping/yw_GdBoxOfficeMapper.xml
+END
+bs_RegisterTypeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/4/RealEstateSystem/src/com/renjun/mapping/bs_RegisterTypeMapper.xml
+END
+yw_RegisterBookMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/RealEstateSystem/!svn/ver/23/RealEstateSystem/src/com/renjun/mapping/yw_RegisterBookMapper.xml
+END
+bs_RightSettingwayMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/RealEstateSystem/!svn/ver/27/RealEstateSystem/src/com/renjun/mapping/bs_RightSettingwayMapper.xml
+END
+bs_ApplicantTypeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_ApplicantTypeMapper.xml
+END
+yw_ParcelUnitMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/RealEstateSystem/!svn/ver/37/RealEstateSystem/src/com/renjun/mapping/yw_ParcelUnitMapper.xml
+END
+bs_OpinionTemplateMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/RealEstateSystem/!svn/ver/18/RealEstateSystem/src/com/renjun/mapping/bs_OpinionTemplateMapper.xml
+END
+yw_RightInformationMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/RealEstateSystem/!svn/ver/32/RealEstateSystem/src/com/renjun/mapping/yw_RightInformationMapper.xml
+END
+yw_ShBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/src/com/renjun/mapping/yw_ShBoxOfficeMapper.xml
+END
+yw_SfBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/36/RealEstateSystem/src/com/renjun/mapping/yw_SfBoxOfficeMapper.xml
+END
+yw_ReceivingDatamxMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/RealEstateSystem/!svn/ver/17/RealEstateSystem/src/com/renjun/mapping/yw_ReceivingDatamxMapper.xml
+END
+bs_OwnedIndustryMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_OwnedIndustryMapper.xml
+END
+yw_CertificateMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/30/RealEstateSystem/src/com/renjun/mapping/yw_CertificateMapper.xml
+END
+yw_CollectFeesInformationMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/RealEstateSystem/!svn/ver/26/RealEstateSystem/src/com/renjun/mapping/yw_CollectFeesInformationMapper.xml
+END
+bs_SexMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_SexMapper.xml
+END
+yw_FsBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/src/com/renjun/mapping/yw_FsBoxOfficeMapper.xml
+END
+yw_AuditingOpinionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/RealEstateSystem/!svn/ver/32/RealEstateSystem/src/com/renjun/mapping/yw_AuditingOpinionMapper.xml
+END
+bs_CadastralSubAreaMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/RealEstateSystem/!svn/ver/28/RealEstateSystem/src/com/renjun/mapping/bs_CadastralSubAreaMapper.xml
+END
+bs_CertificateBoardMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/RealEstateSystem/!svn/ver/11/RealEstateSystem/src/com/renjun/mapping/bs_CertificateBoardMapper.xml
+END
+bs_LandGradeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/RealEstateSystem/!svn/ver/27/RealEstateSystem/src/com/renjun/mapping/bs_LandGradeMapper.xml
+END
+yw_PlaceOnFileMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/31/RealEstateSystem/src/com/renjun/mapping/yw_PlaceOnFileMapper.xml
+END
+bs_DistrictandCountyMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/RealEstateSystem/!svn/ver/28/RealEstateSystem/src/com/renjun/mapping/bs_DistrictandCountyMapper.xml
+END
+yw_BoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/RealEstateSystem/!svn/ver/36/RealEstateSystem/src/com/renjun/mapping/yw_BoxOfficeMapper.xml
+END
+bs_ProcessClassificationMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/RealEstateSystem/!svn/ver/10/RealEstateSystem/src/com/renjun/mapping/bs_ProcessClassificationMapper.xml
+END
+yw_ReceivingDataMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/RealEstateSystem/!svn/ver/30/RealEstateSystem/src/com/renjun/mapping/yw_ReceivingDataMapper.xml
+END
+bs_CharacteristicMethodMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/RealEstateSystem/!svn/ver/11/RealEstateSystem/src/com/renjun/mapping/bs_CharacteristicMethodMapper.xml
+END
+UserMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/src/com/renjun/mapping/UserMapper.xml
+END
+bs_ReasonTemplateMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/RealEstateSystem/!svn/ver/18/RealEstateSystem/src/com/renjun/mapping/bs_ReasonTemplateMapper.xml
+END
+bs_QuartersTypeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/RealEstateSystem/!svn/ver/33/RealEstateSystem/src/com/renjun/mapping/bs_QuartersTypeMapper.xml
+END
+IdentifierNumberMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/RealEstateSystem/!svn/ver/28/RealEstateSystem/src/com/renjun/mapping/IdentifierNumberMapper.xml
+END
+yw_FzBoxOfficeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/RealEstateSystem/!svn/ver/36/RealEstateSystem/src/com/renjun/mapping/yw_FzBoxOfficeMapper.xml
+END
+bs_IdCardTypeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/RealEstateSystem/!svn/ver/7/RealEstateSystem/src/com/renjun/mapping/bs_IdCardTypeMapper.xml
+END

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.yw_RecheckOpiniontMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.yw_RecheckOpiniont" >
+    <id column="recheckOpiniontId" property="recheckopiniontid" jdbcType="INTEGER" />
+    <result column="recheckOpiniontName" property="recheckopiniontname" jdbcType="CHAR" />
+    <result column="boxOfficeId" property="boxofficeid" jdbcType="INTEGER" />
+     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recheckOpiniontId, recheckOpiniontName, boxOfficeId,createTime
+  </sql>
+  <select id="selectRecheckopiniont" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yw_recheckopiniont
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </select>
+   <select id="selectRecheckopiniontByboxOfficeId" resultType="com.renjun.po.yw_FirstOpiniont" >
+  
+    SELECT yw_recheckopiniont.boxOfficeId,yw_recheckopiniont.recheckOpiniontName AS firstOpiniontName,USER.username,yw_recheckopiniont.createTime FROM yw_recheckopiniont
+INNER JOIN yw_boxoffice ON yw_boxoffice.boxOfficeId=yw_recheckopiniont.boxOfficeId
+INNER JOIN yw_fsboxoffice ON yw_fsboxoffice.boxOfficeId=yw_boxoffice.boxOfficeId
+INNER JOIN USER ON USER.userId=yw_fsboxoffice.userId
+ where yw_recheckopiniont.boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+ </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yw_recheckopiniont
+    where recheckOpiniontId = #{recheckopiniontid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertRecheckopiniont" parameterType="com.renjun.po.yw_RecheckOpiniont" >
+    insert into yw_recheckopiniont (recheckOpiniontName, 
+      boxOfficeId,createTime)
+    values (#{recheckopiniontname,jdbcType=CHAR}, 
+      #{boxofficeid,jdbcType=INTEGER},#{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.yw_RecheckOpiniont" >
+    insert into yw_recheckopiniont
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recheckopiniontid != null" >
+        recheckOpiniontId,
+      </if>
+      <if test="recheckopiniontname != null" >
+        recheckOpiniontName,
+      </if>
+      <if test="boxofficeid != null" >
+        boxOfficeId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recheckopiniontid != null" >
+        #{recheckopiniontid,jdbcType=INTEGER},
+      </if>
+      <if test="recheckopiniontname != null" >
+        #{recheckopiniontname,jdbcType=CHAR},
+      </if>
+      <if test="boxofficeid != null" >
+        #{boxofficeid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.yw_RecheckOpiniont" >
+    update yw_recheckopiniont
+    <set >
+      <if test="recheckopiniontname != null" >
+        recheckOpiniontName = #{recheckopiniontname,jdbcType=CHAR},
+      </if>
+      <if test="boxofficeid != null" >
+        boxOfficeId = #{boxofficeid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where recheckOpiniontId = #{recheckopiniontid,jdbcType=INTEGER}
+  </update>
+  <update id="updateRecheckopiniont" parameterType="com.renjun.po.yw_RecheckOpiniont">
+    update yw_recheckopiniont
+    set recheckOpiniontName = #{recheckopiniontname,jdbcType=CHAR},createTime=#{createtime,jdbcType=TIMESTAMP}
+    where boxOfficeId = #{boxofficeid,jdbcType=INTEGER}
+  </update>
+</mapper>

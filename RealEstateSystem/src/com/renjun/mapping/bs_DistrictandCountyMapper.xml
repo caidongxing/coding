@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.bs_DistrictandCountyMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.bs_DistrictandCounty" >
+    <id column="districtAndCountyId" property="districtandcountyid" jdbcType="INTEGER" />
+    <result column="districtAndCounty" property="districtandcounty" jdbcType="CHAR" />
+    <result column="districtAndCountyCode" property="districtandcountycode" jdbcType="CHAR" />
+    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    districtAndCountyId, districtAndCounty, districtAndCountyCode, cityId
+  </sql>
+  <select id="selectDistrictandCounty" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bs_districtandcounty
+   
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bs_districtandcounty
+    where districtAndCountyId = #{districtandcountyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.renjun.po.bs_DistrictandCounty" >
+    insert into bs_districtandcounty (districtAndCountyId, districtAndCounty, 
+      districtAndCountyCode, cityId)
+    values (#{districtandcountyid,jdbcType=INTEGER}, #{districtandcounty,jdbcType=CHAR}, 
+      #{districtandcountycode,jdbcType=CHAR}, #{cityid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.bs_DistrictandCounty" >
+    insert into bs_districtandcounty
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="districtandcountyid != null" >
+        districtAndCountyId,
+      </if>
+      <if test="districtandcounty != null" >
+        districtAndCounty,
+      </if>
+      <if test="districtandcountycode != null" >
+        districtAndCountyCode,
+      </if>
+      <if test="cityid != null" >
+        cityId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="districtandcountyid != null" >
+        #{districtandcountyid,jdbcType=INTEGER},
+      </if>
+      <if test="districtandcounty != null" >
+        #{districtandcounty,jdbcType=CHAR},
+      </if>
+      <if test="districtandcountycode != null" >
+        #{districtandcountycode,jdbcType=CHAR},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.bs_DistrictandCounty" >
+    update bs_districtandcounty
+    <set >
+      <if test="districtandcounty != null" >
+        districtAndCounty = #{districtandcounty,jdbcType=CHAR},
+      </if>
+      <if test="districtandcountycode != null" >
+        districtAndCountyCode = #{districtandcountycode,jdbcType=CHAR},
+      </if>
+      <if test="cityid != null" >
+        cityId = #{cityid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where districtAndCountyId = #{districtandcountyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.renjun.po.bs_DistrictandCounty" >
+    update bs_districtandcounty
+    set districtAndCounty = #{districtandcounty,jdbcType=CHAR},
+      districtAndCountyCode = #{districtandcountycode,jdbcType=CHAR},
+      cityId = #{cityid,jdbcType=INTEGER}
+    where districtAndCountyId = #{districtandcountyid,jdbcType=INTEGER}
+  </update>
+</mapper>

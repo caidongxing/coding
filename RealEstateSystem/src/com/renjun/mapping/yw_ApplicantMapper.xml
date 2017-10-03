@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjun.dao.yw_ApplicantMapper" >
+  <resultMap id="BaseResultMap" type="com.renjun.po.yw_Applicant" >
+    
+    <constructor >
+      <idArg column="applicantId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="applicantName" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="sexId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="applicationForHumanId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="applicantTypeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="idCardTypeId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IdCardNumber" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="phoneNumber" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="commonWayId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="address" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="legalRepresentative" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="legalPhone" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="countryId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="provinceId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ownedIndustryId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="postalcode" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="workUnit" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="areaOfRight" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="proportionOfRights" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="licenceIssuingAuthority" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="agency" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="nameOfAgent" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="agentTelephone" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+  
+    applicantId, applicantName, sexId, applicationForHumanId, applicantTypeId, idCardTypeId, 
+    IdCardNumber, phoneNumber, commonWayId, address, legalRepresentative, legalPhone, 
+    countryId, provinceId, ownedIndustryId, postalcode, workUnit, email, areaOfRight, 
+    proportionOfRights, licenceIssuingAuthority, agency, nameOfAgent, agentTelephone
+  </sql>
+  <select id="selectApplicant" resultMap="BaseResultMap" parameterType="com.renjun.po.yw_Applicant" >
+   
+    select 
+    <include refid="Base_Column_List" />
+    from yw_applicant
+    
+  </select>
+   <select id="selectMhApplicant" resultMap="BaseResultMap" parameterType="com.renjun.po.yw_Applicant" >   
+    select
+    <include refid="Base_Column_List" />
+    from yw_applicant
+    where applicantName like CONCAT('%',#{applicantname},'%')
+  </select>
+  
+  <select id="selectRightApplicant" resultType="com.renjun.vo.yw_Applicant">
+ SELECT (@rownum:=@rownum+1) AS rownum, yw_applicant.applicantId,yw_applicant.applicantName,bs_applicationforhuman.applicationForHumanName,
+bs_idcardtype.idCardTypeName,yw_applicant.IdCardNumber,bs_commonway.commonWayName,yw_applicant.proportionOfRights FROM (SELECT @rownum:=0) AS it ,yw_applicant 
+INNER JOIN bs_applicationforhuman ON yw_applicant.applicationForHumanId=bs_applicationforhuman.applicationForHumanId
+INNER JOIN bs_idcardtype ON yw_applicant.idCardTypeId=bs_idcardtype.idCardTypeId
+INNER JOIN bs_commonway ON yw_applicant.commonWayId=bs_commonway.commonWayId
+
+    
+  </select>
+  
+   <select id="selectRightApplicantByParcelunitid" resultType="com.renjun.vo.yw_Applicant">
+SELECT yw_rightinformation.parcelUnitId,yw_applicant.applicantName,bs_idcardtype.idCardTypeName,yw_applicant.IdCardNumber,yw_applicant.address,yw_applicant.legalRepresentative,
+yw_applicant.legalPhone,yw_applicant.nameOfAgent,yw_applicant.agentTelephone,yw_applicant.agency,yw_applicant.postalcode FROM yw_rightinformation
+
+INNER JOIN yw_parcelunit ON yw_parcelunit.parcelUnitId=yw_rightinformation.parcelUnitId
+INNER JOIN yw_rightpersoninformation ON yw_rightpersoninformation.rightInformationId=yw_rightinformation.rightInformationId
+INNER JOIN yw_applicant ON yw_applicant.applicantId=yw_rightpersoninformation.applicantId
+INNER JOIN bs_idcardtype ON yw_applicant.idCardTypeId=bs_idcardtype.idCardTypeId
+where yw_rightinformation.parcelUnitId=#{parcelunitid,jdbcType=INTEGER}
+   
+  </select>
+  <delete id="deleteApplicant" parameterType="java.lang.Integer" >
+ 
+    delete from yw_applicant
+    where applicantId = #{applicantid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertApplicant" parameterType="com.renjun.po.yw_Applicant" >
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Fri Nov 18 11:05:33 CST 2016.
+    -->
+    insert into yw_applicant (applicantName, sexId, 
+      applicationForHumanId, applicantTypeId, 
+      idCardTypeId, IdCardNumber, phoneNumber, 
+      commonWayId, address, legalRepresentative, 
+      legalPhone, countryId, provinceId, 
+      ownedIndustryId, postalcode, workUnit, 
+      email, areaOfRight, proportionOfRights, 
+      licenceIssuingAuthority, agency, nameOfAgent, 
+      agentTelephone)
+    values (#{applicantname,jdbcType=CHAR}, #{sexid,jdbcType=INTEGER}, 
+      #{applicationforhumanid,jdbcType=INTEGER}, #{applicanttypeid,jdbcType=INTEGER}, 
+      #{idcardtypeid,jdbcType=INTEGER}, #{idcardnumber,jdbcType=CHAR}, #{phonenumber,jdbcType=CHAR}, 
+      #{commonwayid,jdbcType=INTEGER}, #{address,jdbcType=CHAR}, #{legalrepresentative,jdbcType=CHAR}, 
+      #{legalphone,jdbcType=CHAR}, #{countryid,jdbcType=INTEGER}, #{provinceid,jdbcType=INTEGER}, 
+      #{ownedindustryid,jdbcType=INTEGER}, #{postalcode,jdbcType=CHAR}, #{workunit,jdbcType=CHAR}, 
+      #{email,jdbcType=CHAR}, #{areaofright,jdbcType=CHAR}, #{proportionofrights,jdbcType=CHAR}, 
+      #{licenceissuingauthority,jdbcType=CHAR}, #{agency,jdbcType=CHAR}, #{nameofagent,jdbcType=CHAR}, 
+      #{agenttelephone,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.renjun.po.yw_Applicant" >
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Fri Nov 18 11:05:33 CST 2016.
+    -->
+    insert into yw_applicant
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applicantid != null" >
+        applicantId,
+      </if>
+      <if test="applicantname != null" >
+        applicantName,
+      </if>
+      <if test="sexid != null" >
+        sexId,
+      </if>
+      <if test="applicationforhumanid != null" >
+        applicationForHumanId,
+      </if>
+      <if test="applicanttypeid != null" >
+        applicantTypeId,
+      </if>
+      <if test="idcardtypeid != null" >
+        idCardTypeId,
+      </if>
+      <if test="idcardnumber != null" >
+        IdCardNumber,
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber,
+      </if>
+      <if test="commonwayid != null" >
+        commonWayId,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="legalrepresentative != null" >
+        legalRepresentative,
+      </if>
+      <if test="legalphone != null" >
+        legalPhone,
+      </if>
+      <if test="countryid != null" >
+        countryId,
+      </if>
+      <if test="provinceid != null" >
+        provinceId,
+      </if>
+      <if test="ownedindustryid != null" >
+        ownedIndustryId,
+      </if>
+      <if test="postalcode != null" >
+        postalcode,
+      </if>
+      <if test="workunit != null" >
+        workUnit,
+      </if>
+      <if test="eMail != null" >
+        email,
+      </if>
+      <if test="areaofright != null" >
+        areaOfRight,
+      </if>
+      <if test="proportionofrights != null" >
+        proportionOfRights,
+      </if>
+      <if test="licenceissuingauthority != null" >
+        licenceIssuingAuthority,
+      </if>
+      <if test="agency != null" >
+        agency,
+      </if>
+      <if test="nameofagent != null" >
+        nameOfAgent,
+      </if>
+      <if test="agenttelephone != null" >
+        agentTelephone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applicantid != null" >
+        #{applicantid,jdbcType=INTEGER},
+      </if>
+      <if test="applicantname != null" >
+        #{applicantname,jdbcType=CHAR},
+      </if>
+      <if test="sexid != null" >
+        #{sexid,jdbcType=INTEGER},
+      </if>
+      <if test="applicationforhumanid != null" >
+        #{applicationforhumanid,jdbcType=INTEGER},
+      </if>
+      <if test="applicanttypeid != null" >
+        #{applicanttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="idcardtypeid != null" >
+        #{idcardtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="idcardnumber != null" >
+        #{idcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=CHAR},
+      </if>
+      <if test="commonwayid != null" >
+        #{commonwayid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="legalrepresentative != null" >
+        #{legalrepresentative,jdbcType=CHAR},
+      </if>
+      <if test="legalphone != null" >
+        #{legalphone,jdbcType=CHAR},
+      </if>
+      <if test="countryid != null" >
+        #{countryid,jdbcType=INTEGER},
+      </if>
+      <if test="provinceid != null" >
+        #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="ownedindustryid != null" >
+        #{ownedindustryid,jdbcType=INTEGER},
+      </if>
+      <if test="postalcode != null" >
+        #{postalcode,jdbcType=CHAR},
+      </if>
+      <if test="workunit != null" >
+        #{workunit,jdbcType=CHAR},
+      </if>
+      <if test="eMail != null" >
+        #{eMail,jdbcType=CHAR},
+      </if>
+      <if test="areaofright != null" >
+        #{areaofright,jdbcType=CHAR},
+      </if>
+      <if test="proportionofrights != null" >
+        #{proportionofrights,jdbcType=CHAR},
+      </if>
+      <if test="licenceissuingauthority != null" >
+        #{licenceissuingauthority,jdbcType=CHAR},
+      </if>
+      <if test="agency != null" >
+        #{agency,jdbcType=CHAR},
+      </if>
+      <if test="nameofagent != null" >
+        #{nameofagent,jdbcType=CHAR},
+      </if>
+      <if test="agenttelephone != null" >
+        #{agenttelephone,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renjun.po.yw_Applicant" >
+    <!--
+      WARNING - @mbggenerated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      This element was generated on Fri Nov 18 11:05:33 CST 2016.
+    -->
+    update yw_applicant
+    <set >
+      <if test="applicantname != null" >
+        applicantName = #{applicantname,jdbcType=CHAR},
+      </if>
+      <if test="sexid != null" >
+        sexId = #{sexid,jdbcType=INTEGER},
+      </if>
+      <if test="applicationforhumanid != null" >
+        applicationForHumanId = #{applicationforhumanid,jdbcType=INTEGER},
+      </if>
+      <if test="applicanttypeid != null" >
+        applicantTypeId = #{applicanttypeid,jdbcType=INTEGER},
+      </if>
+      <if test="idcardtypeid != null" >
+        idCardTypeId = #{idcardtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="idcardnumber != null" >
+        IdCardNumber = #{idcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber = #{phonenumber,jdbcType=CHAR},
+      </if>
+      <if test="commonwayid != null" >
+        commonWayId = #{commonwayid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="legalrepresentative != null" >
+        legalRepresentative = #{legalrepresentative,jdbcType=CHAR},
+      </if>
+      <if test="legalphone != null" >
+        legalPhone = #{legalphone,jdbcType=CHAR},
+      </if>
+      <if test="countryid != null" >
+        countryId = #{countryid,jdbcType=INTEGER},
+      </if>
+      <if test="provinceid != null" >
+        provinceId = #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="ownedindustryid != null" >
+        ownedIndustryId = #{ownedindustryid,jdbcType=INTEGER},
+      </if>
+      <if test="postalcode != null" >
+        postalcode = #{postalcode,jdbcType=CHAR},
+      </if>
+      <if test="workunit != null" >
+        workUnit = #{workunit,jdbcType=CHAR},
+      </if>
+      <if test="eMail != null" >
+        email = #{eMail,jdbcType=CHAR},
+      </if>
+      <if test="areaofright != null" >
+        areaOfRight = #{areaofright,jdbcType=CHAR},
+      </if>
+      <if test="proportionofrights != null" >
+        proportionOfRights = #{proportionofrights,jdbcType=CHAR},
+      </if>
+      <if test="licenceissuingauthority != null" >
+        licenceIssuingAuthority = #{licenceissuingauthority,jdbcType=CHAR},
+      </if>
+      <if test="agency != null" >
+        agency = #{agency,jdbcType=CHAR},
+      </if>
+      <if test="nameofagent != null" >
+        nameOfAgent = #{nameofagent,jdbcType=CHAR},
+      </if>
+      <if test="agenttelephone != null" >
+        agentTelephone = #{agenttelephone,jdbcType=CHAR},
+      </if>
+    </set>
+    where applicantId = #{applicantid,jdbcType=INTEGER}
+  </update>
+  <update id="updateApplicant" parameterType="com.renjun.po.yw_Applicant" >
+   
+    update yw_applicant
+    set applicantName = #{applicantname,jdbcType=CHAR},
+      sexId = #{sexid,jdbcType=INTEGER},
+      applicationForHumanId = #{applicationforhumanid,jdbcType=INTEGER},
+      applicantTypeId = #{applicanttypeid,jdbcType=INTEGER},
+      idCardTypeId = #{idcardtypeid,jdbcType=INTEGER},
+      IdCardNumber = #{idcardnumber,jdbcType=CHAR},
+      phoneNumber = #{phonenumber,jdbcType=CHAR},
+      commonWayId = #{commonwayid,jdbcType=INTEGER},
+      address = #{address,jdbcType=CHAR},
+      legalRepresentative = #{legalrepresentative,jdbcType=CHAR},
+      legalPhone = #{legalphone,jdbcType=CHAR},
+      countryId = #{countryid,jdbcType=INTEGER},
+      provinceId = #{provinceid,jdbcType=INTEGER},
+      ownedIndustryId = #{ownedindustryid,jdbcType=INTEGER},
+      postalcode = #{postalcode,jdbcType=CHAR},
+      workUnit = #{workunit,jdbcType=CHAR},
+      email = #{email,jdbcType=CHAR},
+      areaOfRight = #{areaofright,jdbcType=CHAR},
+      proportionOfRights = #{proportionofrights,jdbcType=CHAR},
+      licenceIssuingAuthority = #{licenceissuingauthority,jdbcType=CHAR},
+      agency = #{agency,jdbcType=CHAR},
+      nameOfAgent = #{nameofagent,jdbcType=CHAR},
+      agentTelephone = #{agenttelephone,jdbcType=CHAR}
+    where applicantId = #{applicantid,jdbcType=INTEGER}
+  </update>
+</mapper>
